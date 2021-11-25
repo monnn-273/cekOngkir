@@ -74,7 +74,7 @@ class OngkirController extends Controller
     }
     public function submit(Request $request)
     {
-        $ongkir = RajaOngkir::ongkosKirim([
+        $cost = RajaOngkir::ongkosKirim([
             'origin'        => $request->city_origin,
             'destination'   => $request->city_destination,
             'weight'        => $request-> weight,
@@ -82,7 +82,8 @@ class OngkirController extends Controller
 
         ])->get();
 
-        dd($ongkir);
+        $this->harga = $cost;
+        return back()->compact('harga');
 
     }
 

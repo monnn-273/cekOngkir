@@ -102,8 +102,57 @@
            </div>
        </div>
 
-           
-
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <div class="card d-none ongkir">
+                    <div class="card-body">
+                        <ul class="list-group" id="ongkir"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        @if($harga)
+            <table class="w-full mt-5">
+                <thead>
+                    <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                        <th class="px-4 py-3">#</th>
+                        <th class="px-4 py-3">service</th>
+                        <th class="px-4 py-3">description</th>
+                        <th class="px-4 py-3">cost</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white">
+                    <tr class="text-gray-700" wire:loading wire:target="checkOngkir">
+                        <td class="px-4 py-3 text-ms font-semibold border" colspan="4">Loading...</td>
+                    </tr>
+                    @php($no = 1)
+                    @foreach ($harga[0]['costs'] as $item)
+                    <tr class="text-gray-700">
+                        <td class="px-4 py-3 text-ms font-semibold border">{{ $no++ }}</td>
+                        <td class="px-4 py-3 text-ms font-semibold border">{{ $item['service'] }}</td>
+                        <td class="px-4 py-3 text-ms font-semibold border">{{ $item['description'] }}</td>
+                        <td class="px-4 py-3 text-ms font-semibold border">
+                            <table class="text-left">
+                                <tr>
+                                    <th>Cost</th>
+                                    <td>: Rp {{ $item['cost'][0]['value'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Etd</th>
+                                    <td>: {{ $item['cost'][0]['etd'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Note</th>
+                                    <td>: {{ $item['cost'][0]['note'] }}</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
     </body>
 
     <!-- required script -->
@@ -181,6 +230,8 @@
 
 
         });
+
+        
     </script>
 
 </html>
