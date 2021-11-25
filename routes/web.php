@@ -19,7 +19,10 @@ Route::get('/', function () {
 });
 
 Route::get('/cekOngkir', [OngkirController::class,'index']);
-Route::get('/provinces/{id}/cities', [OngkirController::class,'getCities']);
+// penulisan routing tidak sesuai
+// Route::get('/provinces/{id}/cities', [OngkirController::class,'getCities']);
+// yang benar
+Route::get('/province/{id}/cities', [OngkirController::class,'getCities']);
 Route::post('/cekOngkir', [OngkirController::class,'submit']);
 
 

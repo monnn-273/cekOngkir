@@ -47,7 +47,10 @@
         
                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="">Provinsi Asal</label>
+                                    {{-- sebelumnya --}}
+                                    {{-- <label for="">Provinsi Asal</label> --}}
+                                    {{-- yang benar --}}
+                                    <label for="">Provinsi Tujuan</label>
                                     <select name="province_destination" class="form-control">
                                         <option value="">--Provinces--</option>
                                         <!-- fetch data -->
@@ -61,7 +64,10 @@
 
                             <div class="col-md-12">
                                 <div class="-form-group">
-                                    <label for="">Kota Asal</label>
+                                    {{-- sebelumnya --}}
+                                    {{-- <label for="">Kota Asal</label> --}}
+                                    {{-- yang benar --}}
+                                    <label for="">Kota Tujuan</label>
                                     <select name="city_destination" class="form-control">
                                         <option>--Kota--</option>
                                     </select>
@@ -101,7 +107,12 @@
     </body>
 
     <!-- required script -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    {{-- sebelumnya --}}
+    {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> --}}
+
+    {{-- jangan pakai jquery yang slim --}}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script>
@@ -112,16 +123,22 @@
                 let provinceId = $(this).val();
                 if(provinceId)
                 {
-                    jQuery.ajax({
+                    $.ajax({ // sebelumnya jQuery.ajax({
                         url: '/province/'+ provinceId+ '/cities',
                         type:"GET",
                         dataType:"json",
                         success:function(data)
                         {
+                            // sebelumnya
                             $('select[name="city_origin]').empty();
+                            // yang benar
+                            $('select[name="city_origin"]').empty();
                             $.each(data, function(key, value)
                             {
-                                $('select[name="city_origin"]').append('<option value=" '. key + '">' + value + '</option>' );
+                                // sebelumnya
+                                // $('select[name="city_origin"]').append('<option value=" '. key + '">' + value + '</option>' );
+                                // penulisan lebih rapi
+                                $('select[name="city_origin"]').append(`<option value="${key}">${value}</option>`);
                             });
                         },
                     });
@@ -138,15 +155,21 @@
                 let provinceId = $(this).val();
                 if(provinceId)
                 {
-                    jQuery.ajax({
+                    $.ajax({ // sebelumnya jQuery.ajax({
                         url: '/province/'+ provinceId+ '/cities',
                         type:"GET",
                         dataType:"json",
                         success:function(data)
                         {
-                            $('select[name="city_destination]').empty();
+                            // sebelumnya
+                            // $('select[name="city_destination]').empty();
+                            // yang benar
+                            $('select[name="city_destination"]').empty();
                             $.each(data, function(key, value){
-                                $('select[name="city_destination"]').append('<option value=">'. key + '">' + value + '</option>' );
+                                // sebelumnya
+                                // $('select[name="city_destination"]').append('<option value=">'. key + '">' + value + '</option>' );
+                                // penulisan lebih rapi
+                                $('select[name="city_destination"]').append(`<option value="${key}">${value}</option>`);
 
                             });
                         },
