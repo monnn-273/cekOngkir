@@ -82,8 +82,12 @@ class OngkirController extends Controller
 
         ])->get();
 
-        $this->harga = $cost;
-        return back()->compact('harga');
+        // sebelumnya
+        // $this->harga = $cost;
+        // return back()->compact('harga');
+
+        // yang benar
+        return response()->json($cost);
 
     }
 
