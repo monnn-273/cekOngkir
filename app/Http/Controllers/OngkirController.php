@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Province;
 use App\Models\City;
 use App\Models\Courier;
+use App\Models\Order;
 use Kavist\RajaOngkir\Facades\RajaOngkir;
 
 
@@ -89,6 +90,12 @@ class OngkirController extends Controller
         // yang benar
         return response()->json($cost);
 
+    }
+
+    public function order(Request $request)
+    {
+        Order::create($request->all());
+        return "berhasil, cek database";
     }
 
 }

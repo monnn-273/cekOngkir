@@ -24,5 +24,6 @@ Route::get('/cekOngkir', [OngkirController::class,'index']);
 // yang benar
 Route::get('/province/{id}/cities', [OngkirController::class,'getCities']);
 Route::post('/cekOngkir', [OngkirController::class,'submit']);
+Route::post('/order', [OngkirController::class,'order']);
 
 

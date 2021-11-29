@@ -14,12 +14,13 @@
             <div class="card col-md-8">
                 <div class="card-header">
                     Cek Ongkir
+                    <a href="/gantiLokasi">Lokasi</a>
                 </div>
-<h6>Isi di table location : </h6>
-<h6>province : 34</h6>
-<h6>city : 278</h6>
-<h6>(kode kota Medan)</h6>
-<h6>Agar provinsi dan kota tujuan hilang</h6>
+<h1>Isi di table location : </h1>
+<h3>province : 34</h3>
+<h3>city : 278</h3>
+{{-- {{  App\Models\Location::first()->province ==  $province ? 'selected' : '' }} --}}
+{{-- {{  App\Models\Location::first()->city ==  $city ? 'selected' : '' }} --}}
 
                 <div class="card-body">
 
@@ -27,13 +28,7 @@
                     <form id="cekOngkir" action="/cekOngkir" class="form-horizontal" role="form" method="POST">
                         @csrf
                         <div class="form-group-lg">
-                            @if (isset(App\Models\Location::first()->province) && isset(App\Models\Location::first()->city))
-                            <div class="col-md-12">
-                                <input type="hidden" name="province_origin" value="{{  App\Models\Location::first()->province ? App\Models\Location::first()->province : '' }}">
-                                <input type="hidden" name="city_origin" value="{{  App\Models\Location::first()->city ? App\Models\Location::first()->city : '' }}">
-                            </div>
-                                
-                            @else
+
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Provinsi Asal</label>
@@ -57,7 +52,6 @@
                                     </div>
                                 </div>
                             </div>
-                            @endif
 
                             <div class="col-md-12">
                                 <div class="form-group">
